@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class LoginPageModel{
   final unfocusNode = FocusNode();
 
-  TextEditingController? userNameController;
+  TextEditingController? emailController;
   String? Function(BuildContext, String?)? userNameControllerValidator;
   String? _userNameControllerValidator(BuildContext context, String? val) {
     if(val == null || val.isEmpty) {
@@ -28,7 +28,7 @@ class LoginPageModel{
 
   void dispose(){
     unfocusNode.dispose();
-    userNameController?.dispose();
+    emailController?.dispose();
     passwordController?.dispose();
   }
 

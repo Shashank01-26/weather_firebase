@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_assignment/firebase_options.dart';
 import 'package:weather_assignment/login_page/login_page_widget.dart';
-import 'package:weather_assignment/network_services/firebase_app_initialize.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
