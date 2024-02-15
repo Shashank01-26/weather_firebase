@@ -31,17 +31,27 @@ class _WeatherScreenState extends State<WeatherScreen> {
             Positioned(
               top: 80,
               left: 20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '15 Feb, 2024',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  IconButton(
+                      onPressed: (){},
+                      icon: Icon(Icons.favorite)
                   ),
-                  const SizedBox(height: 5),
-                  Text(
-                    _cityName,
-                    style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '15 Feb, 2024',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        _cityName,
+                        style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -53,8 +63,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.blueGrey.withOpacity(0.8), // Adjusted card background color
                       borderRadius: BorderRadius.circular(20),
