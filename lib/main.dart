@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_assignment/firebase_options.dart';
 import 'package:weather_assignment/login_page/login_page_widget.dart';
+import 'package:weather_assignment/screens/weather_screen.dart';
 
 
 Future<void> main() async {
@@ -20,7 +22,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  User? user;
 
+  @override
+  void initState() {
+    super.initState();
+    user = FirebaseAuth.instance.currentUser;
+  }
 
   Future<FirebaseApp> _initializeFirebase() async{
     FirebaseApp firebaseApp = await Firebase.initializeApp();
@@ -39,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           future: _initializeFirebase(),
           builder: (context, snapshot){
             if(snapshot.connectionState == ConnectionState.done) {
-              return LoginPage();
+              return user != null ? const WeatherScreen() : const LoginPage() ;
             }
             return const Center(
               child: CircularProgressIndicator(),

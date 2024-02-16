@@ -19,7 +19,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -37,19 +37,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 children: [
                   IconButton(
                       onPressed: (){},
-                      icon: Icon(Icons.favorite)
+                      icon: const Icon(Icons.favorite)
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         '15 Feb, 2024',
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       const SizedBox(height: 5),
                       Text(
                         _cityName,
-                        style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+                        style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -82,17 +82,18 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       children: [
                         const Icon(Icons.wb_sunny, size: 100, color: Colors.yellow),
                         const SizedBox(height: 20),
-                        Text(
+                        const Text(
                           '25°C',
                           style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                         const SizedBox(height: 10),
                         Text(
                           _weatherCondition,
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                         const SizedBox(height: 30),
                         Container(
+                          height: MediaQuery.sizeOf(context).height * 0.20,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -105,7 +106,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              _buildWeatherDetail('Wind', '10 km/h', Icons.toys),
+                              _buildWeatherDetail('Wind', '10 km/h', Icons.wind_power),
                               const VerticalDivider(color: Colors.white),
                               _buildWeatherDetail('Humidity', '70%', Icons.water_drop),
                               const VerticalDivider(color: Colors.white),
@@ -119,7 +120,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [Colors.blue, Colors.deepPurple],
@@ -161,20 +162,21 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget _buildWeatherDetail(String title, String value, IconData icon) {
     return Column(
       children: [
-        Row(
-          children: [
-            Icon(icon, color: Colors.white),
-            const SizedBox(width: 5),
-            Text(
-              title,
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ],
+        Icon(icon, color: Colors.white),
+        const SizedBox(height: 10),
+        Text(
+          title,
+          style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              decorationStyle: TextDecorationStyle.dashed,
+              fontFamily: 'TimesNewRoman',
+          ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         Text(
           value,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ],
     );
