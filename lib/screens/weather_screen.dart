@@ -33,9 +33,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsetsDirectional.only(top:10.0),
-                    child: const Text(
+                  const Padding(
+                    padding: EdgeInsetsDirectional.only(top:10.0),
+                    child: Text(
                       '15 Feb, 2024',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
@@ -52,7 +52,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(80),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           begin : Alignment.topLeft,
                             end: Alignment.bottomLeft,
                             colors: [Colors.indigo, Colors.blueGrey,Colors.teal]
@@ -70,14 +70,26 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                               Icon(Icons.wb_sunny, size: 100, color: Colors.yellow),
+                              const Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.only(start:50.0),
+                                      child: Icon(Icons.wb_sunny, size: 100, color: Colors.yellow),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               IconButton(
-                                onPressed: (){},
+                                onPressed: () {
+                                  _isFavorite = !_isFavorite;
+                                },
                                 icon: Icon(
-                                  Icons.favorite_border_outlined
+                                  _isFavorite == true ? Icons.favorite : Icons.favorite_border_outlined,
+                                  color: _isFavorite == true ? Colors.red : null,
                                 ),
                               ),
                             ],
